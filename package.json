@@ -1,4 +1,9 @@
 {
+  "name": "cucumber-puppeteer-test",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "node node_modules/cucumber/bin/cucumber.js"
+  },
   "dependencies": {},
   "devDependencies": {
     "cucumber": "^3.1.0",

@@ -4,8 +4,8 @@ const puppeteer = require('puppeteer');
 defineSupportCode(({Before, Then, When}) => {
     Before({}, async() => {
         this.browser = await puppeteer.launch({
-            headless: false,
-            slowMo: 100
+            // headless: false,
+            // slowMo: 150
         });
     })
     When(/I navigate to (.*)$/, async(location) => {
@@ -25,7 +25,12 @@ defineSupportCode(({Before, Then, When}) => {
         const title = await this.page.title();
         console.assert(title == 'Random String - Google Search')
     })
-    Then(/I win/, async() => {
-        console.log(await this.page.title());
+    Then(/the number (\d*) link should be for \"(.*)\"/, async(position, expectedTitle) => {
+        await this.page.waitForNavigation({
+            waitUnitl: 'load'
+        });
+        const linkSelector = `div.srg > div.g:nth-child(${position}) h3 > a`
+        const linkTitle = await this.page.$eval(linkSelector, elem => elem.innerText)
+        console.assert(linkTitle == expectedTitle)
     })
 });

@@ -5,4 +5,4 @@ Feature: Searching on Google
         And I type "Random String" into the search bar
         And I hit Enter
 
-        Then I should see text "Showing results for Random String"
+        Then the number 2 link should be for "Random string generator - Special - Unit conversion"
