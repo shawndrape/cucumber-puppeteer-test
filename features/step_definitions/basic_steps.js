@@ -26,7 +26,7 @@ defineSupportCode(({After, Before, Then, When}) => {
     })
     Then(/the number (\d*) link should be for \"(.*)\"/, {timeout: 30 * 1000}, async(position, expectedTitle) => {
         const linkSelector = `div.srg > div.g:nth-child(${position}) h3 > a`
-        await this.page.waitFor(linkSelector);
+        await this.page.waitFor(linkSelector, {timeout: 29 * 1000});
         const linkTitle = await this.page.$eval(linkSelector, elem => elem.innerText)
         expect(linkTitle).to.eql(expectedTitle)
     })
