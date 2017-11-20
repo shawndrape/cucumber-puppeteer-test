@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "engines": {
     "node": ">=8"
-  }
+  },
   "scripts": {
     "test": "node node_modules/cucumber/bin/cucumber.js"
   },
